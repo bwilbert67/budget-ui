@@ -1,6 +1,7 @@
 import React from 'react';
 import '../index.css';
 import background from '../assets/budget-background.jpg';
+import HomeForm from '../components/HomeForm.js';
 const HomePage = () => {
     return (
         <div
@@ -8,10 +9,15 @@ const HomePage = () => {
                 backgroundImage: `url(${background})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '100vh',
-                width: '100vw',
+                minHeight: '100vh',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
         >
+            <HomeForm/>
         </div>
     );
 };
