@@ -27,6 +27,14 @@ const HomeForm = () => {
         console.log('Form Data:', formData);
     };
 
+    // Function to handle price input validation
+const handlePriceInput = (e) => {
+    const value = e.target.value;
+    if (!/^\d*\.?\d*$/.test(value)) {
+        e.target.value = value.slice(0, -1);
+    }
+};
+
     return (
         <Container maxWidth="sm">
             <Box
@@ -46,6 +54,9 @@ const HomeForm = () => {
                     name="price" 
                     value={formData.price} 
                     onChange={handleInputChange}
+                    inputProps={{ inputMode: 'decimal', pattern: '[0-9]*[.]?[0-9]*' }}
+                    onInput={handlePriceInput}
+                    type="number"
                 />
                 <CustomTextField 
                     label="Item" 
