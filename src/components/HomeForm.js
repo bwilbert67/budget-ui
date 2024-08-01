@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button, Container, Box } from '@mui/material';
 import CustomTextField from './CustomTextField';
+import { submitForm } from '../services/FormService';
 
 const HomeForm = () => {
     // Initialize state for form data
@@ -24,7 +25,7 @@ const HomeForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Print the form data
-        console.log('Form Data:', formData);
+        submitForm(formData);
     };
 
     // Function to handle price input validation
