@@ -16,11 +16,15 @@ const HomeForm = () => {
     useEffect(() => {
         async function fetchCategories() {
             const fetchedCategories = await getCategories();
-            setCategories(fetchedCategories.map(category => category.name));
+            const sortedCategories = fetchedCategories
+                .map(category => category.name)
+                .sort((a, b) => a.localeCompare(b)); // Sort alphabetically
+            setCategories(sortedCategories);
         }
-
+    
         fetchCategories();
     }, []);
+    
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
