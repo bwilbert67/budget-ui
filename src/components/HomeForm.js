@@ -1,18 +1,27 @@
-// src/components/HomeForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Box } from '@mui/material';
 import CustomTextField from './CustomTextField';
-import { submitForm } from '../services/FormService';
+import CustomAutocomplete from './CustomAutocomplete';
+import { submitForm, getCategories } from '../services/FormService';
 
 const HomeForm = () => {
-    // Initialize state for form data
     const [formData, setFormData] = useState({
         price: '',
         item: '',
         category: '',
     });
 
-    // Handle input change
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        async function fetchCategories() {
+            const fetchedCategories = await getCategories();
+            setCategories(fetchedCategories.map(category => category.name));
+        }
+
+        fetchCategories();
+    }, []);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -21,20 +30,24 @@ const HomeForm = () => {
         });
     };
 
-    // Handle form submission
+    const handleCategoryChange = (event, newValue) => {
+        setFormData({
+            ...formData,
+            category: newValue || '',
+        });
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Print the form data
         submitForm(formData);
     };
 
-    // Function to handle price input validation
-const handlePriceInput = (e) => {
-    const value = e.target.value;
-    if (!/^\d*\.?\d*$/.test(value)) {
-        e.target.value = value.slice(0, -1);
-    }
-};
+    const handlePriceInput = (e) => {
+        const value = e.target.value;
+        if (!/^\d*\.?\d*$/.test(value)) {
+            e.target.value = value.slice(0, -1);
+        }
+    };
 
     return (
         <Container maxWidth="sm">
@@ -66,12 +79,13 @@ const handlePriceInput = (e) => {
                     value={formData.item} 
                     onChange={handleInputChange}
                 />
-                <CustomTextField 
-                    label="Category" 
-                    required 
-                    name="category" 
-                    value={formData.category} 
-                    onChange={handleInputChange}
+                <CustomAutocomplete
+                    label="Category"
+                    options={categories}
+                    value={formData.category}
+                    onChange={handleCategoryChange}
+                    name="category"
+                    required
                 />
                 <Button type="submit" variant="contained" color="primary">
                     Submit

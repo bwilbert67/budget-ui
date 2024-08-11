@@ -17,3 +17,24 @@ export async function submitForm(data) {
     }
 }
 
+export async function getCategories() {
+    try {
+        const response = await fetch(`${baseURL}/form/categories`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const categories = await response.json();
+        return categories;
+    } catch (error) {
+        console.error('Error retrieving categories:', error);
+        return [];
+    }
+}
+

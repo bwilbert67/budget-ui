@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-const CustomTextField = ({ label, required = false, ...props }) => {
+const CustomTextField = ({ label, required = false, InputLabelProps = {}, ...props }) => {
     return (
         <TextField
             label={label}
@@ -26,6 +26,7 @@ const CustomTextField = ({ label, required = false, ...props }) => {
                 shrink: true,
                 style: { color: 'gray' },
                 required: false, // Prevent MUI from adding asterisk
+                ...InputLabelProps, // Merge with any provided InputLabelProps
             }}
             {...props}
         />
