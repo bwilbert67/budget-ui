@@ -1,4 +1,6 @@
-const baseURL = 'http://127.0.0.1:5000';
+import getBaseURL from './Config';
+
+const baseURL = getBaseURL();
 
 // Function to submit form data
 export async function submitForm(data) {
