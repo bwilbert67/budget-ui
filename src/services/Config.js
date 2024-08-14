@@ -7,7 +7,7 @@ const getBaseURL = () => {
         return 'http://127.0.0.1:5000';  // Replace with your actual local BFF URL if different
     } else {
         // If the UI is not on localhost, use the production API Gateway URL
-        return 'https://mycustomrestapiid.execute-api.us-east-1.amazonaws.com/prod';
+        return 'http://budget-env.eba-cnytm39p.us-east-2.elasticbeanstalk.com/';
     }
 };
 
