@@ -59,9 +59,9 @@ export async function getPurchases() {
         return [];
     }
 }
-export async function getBudgetLeft() {
+export async function getBudgetLeftData() {
     try {
-        const response = await fetch(`${baseURL}/form/budget-left`, {
+        const response = await fetch(`${baseURL}/form/budget-left-data`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

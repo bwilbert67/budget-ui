@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Container, Box } from '@mui/material';
 import CustomTextField from './CustomTextField';
 import CustomAutocomplete from './CustomAutocomplete';
-import { submitForm, getCategories } from '../services/FormService';
+import { submitForm, getCategories, getBudgetLeftData } from '../services/FormService';
+import BudgetLeftBar from './BudgetLeftBar';
 
 const HomeForm = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const HomeForm = () => {
     });
 
     const [categories, setCategories] = useState([]);
+    const [budgetData, setBudgetData] = useState({ monthly_budget: 0, budget_left: 0 });
 
     useEffect(() => {
         async function fetchCategories() {
@@ -21,8 +23,14 @@ const HomeForm = () => {
                 .sort((a, b) => a.localeCompare(b)); // Sort alphabetically
             setCategories(sortedCategories);
         }
-    
+
+        async function fetchBudgetData() {
+            const data = await getBudgetLeftData();
+            setBudgetData(data);
+        }
+
         fetchCategories();
+        fetchBudgetData();
     }, []);
     
 
@@ -55,6 +63,7 @@ const HomeForm = () => {
 
     return (
         <Container maxWidth="sm">
+            <BudgetLeftBar budgetData={budgetData} />
             <Box
                 component="form"
                 onSubmit={handleSubmit}
@@ -91,7 +100,7 @@ const HomeForm = () => {
                     name="category"
                     required
                 />
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary" sx={{fontFamily: 'var(--primary-font)'}}>
                     Submit
                 </Button>
             </Box>

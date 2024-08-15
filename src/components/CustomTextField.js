@@ -20,11 +20,17 @@ const CustomTextField = ({ label, required = false, InputLabelProps = {}, ...pro
                     '&.Mui-focused fieldset': {
                         borderColor: 'black', // Border color when focused
                     },
+                    '& input': {
+                        fontFamily: 'var(--primary-font)', // Apply Rubik font to input text
+                    },
+                },
+                '& .MuiInputLabel-root': {
+                    fontFamily: 'var(--primary-font)', // Apply Rubik font to label
                 },
             }}
             InputLabelProps={{
                 shrink: true,
-                style: { color: 'gray' },
+                style: { color: 'gray', fontFamily: 'var(--primary-font)'},
                 required: false, // Prevent MUI from adding asterisk
                 ...InputLabelProps, // Merge with any provided InputLabelProps
             }}
