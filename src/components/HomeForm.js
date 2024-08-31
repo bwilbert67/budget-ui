@@ -100,7 +100,7 @@ const HomeForm = () => {
                     name="category"
                     required
                 />
-                <Button type="submit" variant="contained" color="primary" sx={{fontFamily: 'var(--primary-font)'}}>
+                <Button type="submit" variant="contained" color="secondary" sx={{fontFamily: 'var(--primary-font)'}}>
                     Submit
                 </Button>
             </Box>

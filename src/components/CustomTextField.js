@@ -1,7 +1,11 @@
 import React from 'react';
 import { TextField } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const CustomTextField = ({ label, required = false, InputLabelProps = {}, ...props }) => {
+const theme = useTheme();
+const primaryColor = theme.palette.primary.main;
+const secondaryColor = theme.palette.secondary.main;
     return (
         <TextField
             label={label}
@@ -12,20 +16,20 @@ const CustomTextField = ({ label, required = false, InputLabelProps = {}, ...pro
                 backgroundColor: 'white',
                 '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                        borderColor: 'black', // Default border color
+                        borderColor: primaryColor, // Default border color
                     },
                     '&:hover fieldset': {
-                        borderColor: 'black', // Border color on hover
+                        borderColor: primaryColor, // Border color on hover
                     },
                     '&.Mui-focused fieldset': {
-                        borderColor: 'black', // Border color when focused
+                        borderColor: primaryColor, // Border color when focused
                     },
                     '& input': {
-                        fontFamily: 'var(--primary-font)', // Apply Rubik font to input text
+                        fontFamily: 'var(--primary-font)', 
                     },
                 },
                 '& .MuiInputLabel-root': {
-                    fontFamily: 'var(--primary-font)', // Apply Rubik font to label
+                    fontFamily: 'var(--primary-font)', 
                 },
             }}
             InputLabelProps={{
