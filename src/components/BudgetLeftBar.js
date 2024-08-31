@@ -7,7 +7,6 @@ const BudgetLeftBar = ({ budgetData }) => {
     const budgetLeft = budgetData.budget_left;
     const percentageLeft = (budgetLeft / monthlyBudget) * 100;
 
-    // Calculate days left in the current month
     const today = new Date();
     const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     const daysLeft = lastDayOfMonth.getDate() - today.getDate();
