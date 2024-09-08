@@ -14,6 +14,7 @@ export async function submitForm(data) {
         });
         const result = await response.json();
         console.log('Form Submission Response:', result);
+        window.location.href = window.location.href;
     } catch (error) {
         console.error('Error submitting form:', error);
     }
