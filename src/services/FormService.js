@@ -2,7 +2,6 @@ import getBaseURL from './Config';
 
 const baseURL = getBaseURL();
 
-// Function to submit form data
 export async function submitForm(data) {
     try {
         const response = await fetch(`${baseURL}/form/submit`, {
@@ -12,13 +11,22 @@ export async function submitForm(data) {
             },
             body: JSON.stringify(data),
         });
-        const result = await response.json();
-        console.log('Form Submission Response:', result);
-        window.location.href = window.location.href;
+
+        // Log the response status for debugging
+        console.log('Response Status:', response.status);
+
+        // Reload the page regardless of the response status
+        window.location.reload();
+        
     } catch (error) {
+        // Log errors for debugging
         console.error('Error submitting form:', error);
+        // Still reload the page even if there was an error
+        window.location.reload();
     }
 }
+
+
 
 export async function getCategories() {
     try {
