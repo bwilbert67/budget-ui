@@ -15,8 +15,6 @@ export async function submitForm(data) {
         // Log the response status for debugging
         console.log('Response Status:', response.status);
 
-        // Reload the page regardless of the response status
-        window.location.reload();
         
     } catch (error) {
         // Log errors for debugging

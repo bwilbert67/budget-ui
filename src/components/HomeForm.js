@@ -50,6 +50,7 @@ const HomeForm = () => {
     };
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         submitForm(formData);
     };
 
