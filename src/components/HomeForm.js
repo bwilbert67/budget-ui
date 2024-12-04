@@ -49,10 +49,19 @@ const HomeForm = () => {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        submitForm(formData);
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Prevent default form submission
+    
+        try {
+            await submitForm(formData); // Wait for the form to be submitted
+            window.location.reload();   // Reload the page after successful submission
+        } catch (error) {
+            console.error('Error during form submission:', error);
+            // You could choose to reload here as well, depending on desired behavior
+            window.location.reload();
+        }
     };
+    
 
     const handlePriceInput = (e) => {
         const value = e.target.value;
@@ -100,7 +109,7 @@ const HomeForm = () => {
                     name="category"
                     required
                 />
-                <Button type="submit" variant="contained" color="primary" sx={{fontFamily: 'var(--primary-font)'}}>
+                <Button type="submit" variant="contained" color="secondary" sx={{fontFamily: 'var(--primary-font)'}}>
                     Submit
                 </Button>
             </Box>

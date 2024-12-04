@@ -4,7 +4,7 @@ import CustomTextField from './CustomTextField';
 
 // Custom Popper to control dropdown behavior and styling
 const StyledPopper = styled(Popper)(({ theme }) => ({
-    border: '1px solid black', // Slim black border
+    border: `2px solid ${theme.palette.primary.main}`, 
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[1],
     width: '200px', // Smaller width initially

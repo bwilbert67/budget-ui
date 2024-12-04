@@ -1,6 +1,6 @@
 import React from 'react';
 import '../index.css';
-import background from '../assets/budget-background.jpg';
+import background from '../assets/budget-background2.jpg';
 import HomeForm from '../components/HomeForm.js';
 const HomePage = () => {
     return (
